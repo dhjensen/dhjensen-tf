@@ -177,7 +177,7 @@ resource "cloudflare_zone" "zones" {
   }
 
   zone = each.value.zone
-  paused = true
+  paused = false
   #Setting plan to free gives http 403 error.
   #plan = "free"
   type = "full"
