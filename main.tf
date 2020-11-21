@@ -7,6 +7,14 @@ provider "github" {
   token = var.github_token
 }
 
+provider "cloudflare" {
+  version = "~> 2.0"
+
+  email       = var.cloudflare_email
+  api_token   = var.cloudflare_api_token
+}
+
+
 // Configure the repository with the dynamically created Netlify key.
 resource "github_repository_deploy_key" "key" {
   title      = "Netlify deploy key"
