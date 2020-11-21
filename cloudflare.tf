@@ -13,58 +13,74 @@ locals {
 
   cname_a_records = [
     {
-      zone  = "dhjensen.dk"
-      type  = "CNAME"
-      name  = "dhjensen.dk"
-      value = "dhjensen.netlify.app"
+      zone    = "dhjensen.dk"
+      type    = "CNAME"
+      name    = "dhjensen.dk"
+      value   = "dhjensen.netlify.app"
+      proxied = "false"
     },
     {
-      zone  = "dhjensen.dk"
-      type  = "CNAME"
-      name  = "www"
-      value = "dhjensen.netlify.app"
+      zone    = "dhjensen.dk"
+      type    = "CNAME"
+      name    = "www"
+      value   = "dhjensen.netlify.app"
+      proxied = "false"
     },
     {
-      zone  = "dhjensen.dk"
-      type  = "CNAME"
-      name  = "blog"
-      value = "ghs.google.com"
+      zone    = "dhjensen.dk"
+      type    = "CNAME"
+      name    = "blog"
+      value   = "ghs.google.com"
+      proxied = "false"
     },
     {
-      zone  = "daniboy.dk"
-      type  = "CNAME"
-      name  = "sites"
-      value = "ghs.google.com"
+      zone    = "daniboy.dk"
+      type    = "CNAME"
+      name    = "sites"
+      value   = "ghs.google.com"
+      proxied = "false"
     },
     {
-      zone  = "daniboy.dk"
-      type  = "CNAME"
-      name  = "calendar"
-      value = "ghs.google.com"
+      zone    = "daniboy.dk"
+      type    = "CNAME"
+      name    = "calendar"
+      value   = "ghs.google.com"
+      proxied = "false"
     },
     {
-      zone  = "daniboy.dk"
-      type  = "CNAME"
-      name  = "skole"
-      value = "ghs.google.com"
+      zone    = "daniboy.dk"
+      type    = "CNAME"
+      name    = "skole"
+      value   = "ghs.google.com"
+      proxied = "false"
     },
     {
-      zone  = "daniboy.dk"
-      type  = "CNAME"
-      name  = "docs"
-      value = "ghs.google.com"
+      zone    = "daniboy.dk"
+      type    = "CNAME"
+      name    = "docs"
+      value   = "ghs.google.com"
+      proxied = "false"
     },
     {
-      zone  = "daniboy.dk"
-      type  = "CNAME"
-      name  = "www"
-      value = "ghs.google.com"
+      zone    = "daniboy.dk"
+      type    = "CNAME"
+      name    = "mail"
+      value   = "ghs.google.com"
+      proxied = "false"
     },
     {
-      zone  = "daniboy.dk"
-      type  = "CNAME"
-      name  = "mail"
-      value = "ghs.google.com"
+      zone    = "daniboy.dk"
+      type    = "A"
+      name    = "@"
+      value   = "192.0.2.1"
+      proxied = "true"
+    },
+    {
+      zone    = "daniboy.dk"
+      type    = "A"
+      name    = "www"
+      value   = "192.0.2.1"
+      proxied = "true"
     }
   ]
 
@@ -194,7 +210,7 @@ resource "cloudflare_record" "cname_a_records" {
   type    = each.value.type
   name    = each.value.name
   value   = each.value.value
-  proxied = false
+  proxied = each.value.proxied
 
 }
 
@@ -232,4 +248,15 @@ resource "cloudflare_record" "srv_records" {
   }
 
   proxied   = false
+}
+
+resource "cloudflare_page_rule" "daniboy_redirect" {
+  zone_id = cloudflare_zone.zones["daniboy.dk"].id
+  target = "*.daniboy.dk/*"
+  actions {
+    forwarding_url {
+      status_code = 301
+      url = "https://dhjensen.dk"
+    }
+  }
 }
