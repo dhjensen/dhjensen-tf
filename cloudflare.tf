@@ -8,6 +8,10 @@ locals {
     {
       zone        = "daniboy.dk"
       jump_start  = false
+    },
+    {
+      zone        = "dhjensen.tech"
+      jump_start  = false
     }
   ]
 
@@ -81,6 +85,13 @@ locals {
       name    = "www"
       value   = "192.0.2.1"
       proxied = "true"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "A"
+      name    = "r01"
+      value   = "87.61.92.76"
+      proxied = "false"
     }
   ]
 
