@@ -14,8 +14,8 @@ terraform {
       version = "= 0.4.0"
     }
     github = {
-      source = "hashicorp/github"
-      version = "3.0.0"
+      source = "integrations/github"
+      version = "4.2.0"
     }
     cloudflare = {
       source = "cloudflare/cloudflare"
