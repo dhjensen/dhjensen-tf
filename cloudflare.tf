@@ -18,16 +18,37 @@ locals {
   cname_a_records = [
     {
       zone    = "dhjensen.dk"
-      type    = "CNAME"
+      type    = "A"
       name    = "dhjensen.dk"
-      value   = "dhjensen.netlify.app"
+      value   = "185.199.108.153"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.dk"
+      type    = "A"
+      name    = "dhjensen.dk"
+      value   = "185.199.109.153"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.dk"
+      type    = "A"
+      name    = "dhjensen.dk"
+      value   = "185.199.110.153"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.dk"
+      type    = "A"
+      name    = "dhjensen.dk"
+      value   = "185.199.111.153"
       proxied = "false"
     },
     {
       zone    = "dhjensen.dk"
       type    = "CNAME"
       name    = "www"
-      value   = "dhjensen.netlify.app"
+      value   = "dhjensen.dk"
       proxied = "false"
     },
     {
@@ -214,7 +235,7 @@ resource "cloudflare_zone" "zones" {
 # dhjensen.dk ALIAS dhjensen.netlify.app.
 resource "cloudflare_record" "cname_a_records" {
   for_each = {
-    for record in local.cname_a_records : "${record.zone}.${record.name}" => record
+    for record in local.cname_a_records : "${record.zone}.${record.name}.${record.value}" => record
   }
 
   zone_id = cloudflare_zone.zones[each.value.zone].id
