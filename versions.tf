@@ -9,10 +9,6 @@ terraform {
   }
 
   required_providers {
-    netlify = {
-      source = "terraform-providers/netlify"
-      version = "= 0.4.0"
-    }
     github = {
       source = "integrations/github"
       version = "4.2.0"
