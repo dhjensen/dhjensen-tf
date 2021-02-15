@@ -38,23 +38,3 @@ provider "registry.terraform.io/integrations/github" {
     "zh:fe8550d8205ffb496ff933b0e97ba5b8acbb5224832df9fa115f8f7818b27df9",
   ]
 }
-
-provider "registry.terraform.io/terraform-providers/netlify" {
-  version     = "0.4.0"
-  constraints = "0.4.0"
-  hashes = [
-    "h1:I3d2NDQ8qiTFYqdtpfiPtk7VeiY7I1aWrH2ty9On2Cw=",
-    "zh:0cafcb708eb4908e97e91160a20a5bfcb3255a81d8568b700a2197dde764e793",
-    "zh:2bd30c705da5b42d005eac89aaea2232f05f71c5c9b109e59f28d94cafd96f25",
-    "zh:4a50d99d444338cf7f329bf407d3c3ad67050225e9293ca86bfebdca0e1f86b8",
-    "zh:4c16e900b39facd646cfc8ae4cb4bcaff0c2003184e70fe10260abdf09c8d5fe",
-    "zh:4c81aedaaf8450699cfdc478f0b20c61b553817f2ec7062d8ef9cde5d9cebf43",
-    "zh:4e8e6fa282178c08769c4b5ed497bad9ddc23cf505cb2cafc5357271d2e8e008",
-    "zh:561e63e1c4841b42ee261b41993b95b0a7c5cd9af418115a07f0dfd781899c93",
-    "zh:71bb79b0480191d55cc3752467bc3efdb690197326d4137c94c2c5de3502535a",
-    "zh:806bbf03da07bc0720e1fa7164294557cb9472fdfb330135bc75b46402983f85",
-    "zh:b63d2aa1a598b91650b9f7a82bee5d1c5f16b723b54ea83556e87bb8d862c0c5",
-    "zh:e4f4c56587bbc92b58e2d979eb87b7cb03f8513f865df6c8094775fed52eb8f4",
-    "zh:e9c298da9f343113f9a3252a3355cdaf095d3b217b12bac83e417fa7fd896e2c",
-  ]
-}
