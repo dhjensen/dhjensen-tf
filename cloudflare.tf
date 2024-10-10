@@ -232,6 +232,7 @@ resource "cloudflare_zone" "zones" {
   }
 
   zone = each.value.zone
+  account_id = "1cb328fc2007a477b2baf8e7fd6c1ee3"
   paused = false
   #Setting plan to free gives http 403 error.
   #plan = "free"
@@ -248,7 +249,7 @@ resource "cloudflare_record" "cname_a_records" {
   zone_id = cloudflare_zone.zones[each.value.zone].id
   type    = each.value.type
   name    = each.value.name
-  value   = each.value.value
+  content = each.value.value
   proxied = each.value.proxied
 
 }
@@ -261,33 +262,33 @@ resource "cloudflare_record" "mx_records" {
   zone_id   = cloudflare_zone.zones[each.value.zone].id
   type      = "MX"
   name      = each.value.zone
-  value     = each.value.value
+  content   = each.value.value
   priority  = each.value.priority
   proxied   = false
 }
 
 # _xmpp-server._tcp 43200 IN SRV 5 0 5269 xmpp-server.l.google.com.
-resource "cloudflare_record" "srv_records" {
-  for_each = {
-    for record in local.srv_records : "${record.zone}.${record.data_name}.${record.data_target}" => record
-  }
-
-  zone_id   = cloudflare_zone.zones[each.value.zone].id
-  type      = "SRV"
-  name      = "@"
-
-  data = {
-    service  = "_sip"
-    proto    = "_tls"
-    name     = each.value.data_name
-    priority = each.value.data_priority
-    weight   = 0
-    port     = 5269
-    target   = each.value.data_target
-  }
-
-  proxied   = false
-}
+# The following gives this error when used: Error: expected DNS record to not already be present but already exists
+#resource "cloudflare_record" "srv_records" {
+#  for_each = {
+#    for record in local.srv_records : "${record.zone}.${record.data_name}.${record.data_target}" => record
+#  }
+#
+#  zone_id   = cloudflare_zone.zones[each.value.zone].id
+#  type      = "SRV"
+#  name      = "@"
+#  proxied   = false
+#
+#  data {
+#    service  = "_sip"
+#    proto    = "_tls"
+#    name     = each.value.data_name
+#    priority = each.value.data_priority
+#    weight   = 0
+#    port     = 5269
+#    target   = each.value.data_target
+#  }
+#}
 
 resource "cloudflare_page_rule" "daniboy_redirect" {
   zone_id = cloudflare_zone.zones["daniboy.dk"].id
