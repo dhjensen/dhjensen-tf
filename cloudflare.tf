@@ -46,6 +46,13 @@ locals {
     },
     {
       zone    = "dhjensen.dk"
+      type    = "A"
+      name    = "matomo"
+      value   = "87.61.92.76"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.dk"
       type    = "CNAME"
       name    = "www"
       value   = "dhjensen.dk"
