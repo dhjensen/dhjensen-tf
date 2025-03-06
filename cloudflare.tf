@@ -228,12 +228,17 @@ locals {
 
 resource "cloudflare_zone" "zones" {
   for_each = {
+    #for name in local.zones : name.name => name
     for zone in local.zones : zone.zone => zone
   }
 
+  #account = {
+  #  id = "1cb328fc2007a477b2baf8e7fd6c1ee3"
+  #}
+  #name = each.value.name
   zone = each.value.zone
   account_id = "1cb328fc2007a477b2baf8e7fd6c1ee3"
-  paused = false
+  #paused = false
   #Setting plan to free gives http 403 error.
   #plan = "free"
   type = "full"
@@ -251,6 +256,7 @@ resource "cloudflare_record" "cname_a_records" {
   name    = each.value.name
   content = each.value.value
   proxied = each.value.proxied
+  #ttl     = 3600
 
 }
 
@@ -265,11 +271,12 @@ resource "cloudflare_record" "mx_records" {
   content   = each.value.value
   priority  = each.value.priority
   proxied   = false
+  #ttl       = 3600
 }
 
 # _xmpp-server._tcp 43200 IN SRV 5 0 5269 xmpp-server.l.google.com.
 # The following gives this error when used: Error: expected DNS record to not already be present but already exists
-#resource "cloudflare_record" "srv_records" {
+# resource "cloudflare_record" "srv_records" {
 #  for_each = {
 #    for record in local.srv_records : "${record.zone}.${record.data_name}.${record.data_target}" => record
 #  }
@@ -288,11 +295,12 @@ resource "cloudflare_record" "mx_records" {
 #    port     = 5269
 #    target   = each.value.data_target
 #  }
-#}
+# }
 
 resource "cloudflare_page_rule" "daniboy_redirect" {
   zone_id = cloudflare_zone.zones["daniboy.dk"].id
   target = "*.daniboy.dk/*"
+
   actions {
     forwarding_url {
       status_code = 301
