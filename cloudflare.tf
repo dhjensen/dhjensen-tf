@@ -127,6 +127,13 @@ locals {
       name    = "beszel"
       value   = "r01"
       proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "npm"
+      value   = "r01"
+      proxied = "false"
     }
   ]
 
