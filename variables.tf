@@ -1,8 +1,3 @@
-variable "github_token" {
-  type = string
-  description = "Github token with access"
-}
-
 variable "cloudflare_email" {
   type= string
   description = "Cloudflare e-mail account address"

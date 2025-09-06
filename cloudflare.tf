@@ -236,17 +236,18 @@ resource "cloudflare_zone" "zones" {
   #  id = "1cb328fc2007a477b2baf8e7fd6c1ee3"
   #}
   #name = each.value.name
-  zone = each.value.zone
-  account_id = "1cb328fc2007a477b2baf8e7fd6c1ee3"
+  name = each.value.zone
+  account = {
+      id = "1cb328fc2007a477b2baf8e7fd6c1ee3"
+    }
   #paused = false
   #Setting plan to free gives http 403 error.
   #plan = "free"
   type = "full"
-  jump_start = each.value.jump_start
 }
 
 # dhjensen.dk ALIAS dhjensen.netlify.app.
-resource "cloudflare_record" "cname_a_records" {
+resource "cloudflare_dns_record" "cname_a_records" {
   for_each = {
     for record in local.cname_a_records : "${record.zone}.${record.name}.${record.value}" => record
   }
@@ -256,11 +257,11 @@ resource "cloudflare_record" "cname_a_records" {
   name    = each.value.name
   content = each.value.value
   proxied = each.value.proxied
-  #ttl     = 3600
+  ttl     = 1
 
 }
 
-resource "cloudflare_record" "mx_records" {
+resource "cloudflare_dns_record" "mx_records" {
   for_each = {
     for record in local.mx_records : "${record.zone}.${record.value}" => record
   }
@@ -271,7 +272,7 @@ resource "cloudflare_record" "mx_records" {
   content   = each.value.value
   priority  = each.value.priority
   proxied   = false
-  #ttl       = 3600
+  ttl       = 1
 }
 
 # _xmpp-server._tcp 43200 IN SRV 5 0 5269 xmpp-server.l.google.com.
@@ -300,9 +301,10 @@ resource "cloudflare_record" "mx_records" {
 resource "cloudflare_page_rule" "daniboy_redirect" {
   zone_id = cloudflare_zone.zones["daniboy.dk"].id
   target = "*.daniboy.dk/*"
+  status = "active"
 
-  actions {
-    forwarding_url {
+  actions = {
+    forwarding_url = {
       status_code = 301
       url = "https://dhjensen.dk"
     }
