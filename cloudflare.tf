@@ -162,6 +162,13 @@ locals {
       name    = "maubot"
       value   = "r01.dhjensen.tech"
       proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "cyberchef"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
     }
   ]
 
