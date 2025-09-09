@@ -183,6 +183,13 @@ locals {
       name    = "dozzle"
       value   = "r01.dhjensen.tech"
       proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "homarr"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
     }
   ]
 
