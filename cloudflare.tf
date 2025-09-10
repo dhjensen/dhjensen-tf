@@ -190,6 +190,13 @@ locals {
       name    = "homarr"
       value   = "r01.dhjensen.tech"
       proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "speedtest"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
     }
   ]
 
