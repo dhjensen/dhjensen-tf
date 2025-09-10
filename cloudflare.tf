@@ -197,6 +197,13 @@ locals {
       name    = "speedtest"
       value   = "r01.dhjensen.tech"
       proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "rustdesk"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
     }
   ]
 
