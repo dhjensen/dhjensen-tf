@@ -204,6 +204,13 @@ locals {
       name    = "rustdesk"
       value   = "r01.dhjensen.tech"
       proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "duplicati"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
     }
   ]
 
