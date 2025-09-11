@@ -218,6 +218,13 @@ locals {
       name    = "netbox"
       value   = "r01.dhjensen.tech"
       proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "ombi"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
     }
   ]
 
