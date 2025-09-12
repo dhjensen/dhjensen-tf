@@ -246,6 +246,13 @@ locals {
       name    = "ombi"
       value   = "r01.dhjensen.tech"
       proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "jackett"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
     }
   ]
 
