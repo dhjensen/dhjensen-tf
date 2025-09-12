@@ -138,6 +138,13 @@ locals {
     {
       zone    = "dhjensen.tech"
       type    = "CNAME"
+      name    = "npm-pc"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
       name    = "wg"
       value   = "r01.dhjensen.tech"
       proxied = "false"
