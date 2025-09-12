@@ -138,6 +138,13 @@ locals {
     {
       zone    = "dhjensen.tech"
       type    = "CNAME"
+      name    = "npm-pc"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
       name    = "wg"
       value   = "r01.dhjensen.tech"
       proxied = "false"
@@ -146,6 +153,13 @@ locals {
       zone    = "dhjensen.tech"
       type    = "CNAME"
       name    = "wud"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "wud-pc"
       value   = "r01.dhjensen.tech"
       proxied = "false"
     },
@@ -181,6 +195,13 @@ locals {
       zone    = "dhjensen.tech"
       type    = "CNAME"
       name    = "dozzle"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "dozzle-pc"
       value   = "r01.dhjensen.tech"
       proxied = "false"
     },
