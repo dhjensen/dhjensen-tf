@@ -18,7 +18,7 @@ locals {
     },
     {
       name        = "cyber-chef-docker"
-      description = "CyperChef docker compose"
+      description = "CyperChef"
     },
     {
       name        = "dhjensen"
@@ -54,7 +54,7 @@ locals {
     },
     {
       name        = "jackett-docker"
-      description = "Jackett docker compose"
+      description = "Jackett"
     },
     {
       name        = "jellyfin-docker"
@@ -110,7 +110,27 @@ locals {
     },
     {
       name        = "raspberry"
-      description = "Configuring raspberry pi as a docker host"
+      description = "Configuring raspberry pi OS as a docker host"
+    },
+    {
+      name        = "rustdesk-docker"
+      description = "RustDesk"
+    },
+    {
+      name        = "sonarr-docker"
+      description = "Sonarr"
+    },
+    {
+      name        = "vagrant"
+      description = "Vagrant"
+    },
+    {
+      name        = "wg-portal-docker"
+      description = "WireGuard portal"
+    },
+    {
+      name        = "whats-up-docker"
+      description = "What's up Docker with ntfy inegration"
     }
   ]
 }
