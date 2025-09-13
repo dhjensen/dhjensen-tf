@@ -1,10 +1,6 @@
 locals {
   repositories = [
     {
-      name        = "azuretest"
-      description = "Azure / Terraform test project. Can never go public"
-    },
-    {
       name        = "beszel-agent"
       description = "Beszel agent with Nvidia support"
     },
@@ -142,6 +138,7 @@ resource "github_repository" "repository" {
 
   name                    = each.value.name
   description             = each.value.description
+  visibility              = "public"
   has_issues              = true
   has_discussions         = true
   has_projects            = false
@@ -164,4 +161,27 @@ resource "github_branch_default" "main" {
   }
   repository        = github_repository.repository[each.value.name].name
   branch            = github_branch.main[each.value.name].branch
+}
+
+resource "github_repository_ruleset" "default_branch_protection" {
+  for_each = {
+    for repository in local.repositories : repository.name => repository
+  }
+  enforcement = "active"
+  name        = "default_branch_protection"
+  rules {
+    creation                = false
+    deletion                = false
+    required_signatures     = true
+    required_linear_history = true
+    update                  = false
+  }
+  target      = "branch"
+  conditions {
+    ref_name {
+      include = ["~DEFAULT_BRANCH"]
+      exclude = []
+    }
+  }
+  repository  = github_repository.repository[each.value.name].name
 }
