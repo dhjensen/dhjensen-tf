@@ -41,6 +41,10 @@ locals {
       description = "Jeff Gerlling course stuff"
     },
     {
+      name        = "gitea-docker"
+      description = "Gitea GitHub mirror"
+    },
+    {
       name        = "homarr-docker"
       description = "Homarr dashboard"
     },
@@ -148,14 +152,7 @@ resource "github_repository" "repository" {
   allow_rebase_merge      = false
   delete_branch_on_merge  = true
   has_downloads           = false
-}
-
-resource "github_branch" "main" {
-  for_each = {
-    for repository in local.repositories : repository.name => repository
-  }
-  repository    = github_repository.repository[each.value.name].name
-  branch        = "main"
+  auto_init               = false
 }
 
 resource "github_branch_default" "main" {
@@ -163,7 +160,7 @@ resource "github_branch_default" "main" {
     for repository in local.repositories : repository.name => repository
   }
   repository        = github_repository.repository[each.value.name].name
-  branch            = github_branch.main[each.value.name].branch
+  branch            = "main"
 }
 
 resource "github_repository_ruleset" "default_branch_protection" {
