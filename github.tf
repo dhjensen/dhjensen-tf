@@ -149,3 +149,19 @@ resource "github_repository" "repository" {
   delete_branch_on_merge  = true
   has_downloads           = false
 }
+
+resource "github_branch" "main" {
+  for_each = {
+    for repository in local.repositories : repository.name => repository
+  }
+  repository    = github_repository.repository[each.value.name].name
+  branch        = "main"
+}
+
+resource "github_branch_default" "main" {
+  for_each = {
+    for repository in local.repositories : repository.name => repository
+  }
+  repository        = github_repository.repository[each.value.name].name
+  branch            = github_branch.main[each.value.name].branch
+}
