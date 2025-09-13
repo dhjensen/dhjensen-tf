@@ -143,6 +143,9 @@ resource "github_repository" "repository" {
   has_discussions         = true
   has_projects            = false
   has_wiki                = false
+  allow_merge_commit      = true
+  allow_squash_merge      = false
+  allow_rebase_merge      = false
   delete_branch_on_merge  = true
   has_downloads           = false
 }
@@ -170,10 +173,12 @@ resource "github_repository_ruleset" "default_branch_protection" {
   enforcement = "active"
   name        = "default_branch_protection"
   rules {
-    creation                = false
-    deletion                = false
+    creation                = true
+    deletion                = true
+    non_fast_forward        = true
+    pull_request {}
+    required_linear_history = false
     required_signatures     = true
-    required_linear_history = true
     update                  = false
   }
   target      = "branch"
