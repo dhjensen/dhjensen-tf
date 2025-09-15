@@ -17,6 +17,10 @@ terraform {
       source  = "integrations/github"
       version = "6.6.0"
     }
+    gitea = {
+      source  = "go-gitea/gitea"
+      version = "0.7.0"
+    }
   }
 
   required_version = ">= 1.2"
