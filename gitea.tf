@@ -27,4 +27,5 @@ resource "gitea_repository" "mirror" {
   migration_service_auth_token  = var.github_token
   mirror                        = true
   private                       = false
+  depends_on                    = [github_repository.repository]
 }
