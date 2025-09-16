@@ -307,112 +307,35 @@ locals {
       priority  = 30
     }
   ]
-
-  srv_records = [
-    {
-      zone          = "daniboy.dk"
-      data_name     = "_xmpp-server._tcp"
-      data_priority = 5
-      data_target   = "xmpp-server.l.google.com"
-    },
-    {
-      zone          = "daniboy.dk"
-      data_name     = "_xmpp-server._tcp"
-      data_priority = 20
-      data_target   = "xmpp-server1.l.google.com"
-    },
-    {
-      zone          = "daniboy.dk"
-      data_name     = "_xmpp-server._tcp"
-      data_priority = 20
-      data_target   = "xmpp-server2.l.google.com"
-    },
-    {
-      zone          = "daniboy.dk"
-      data_name     = "_xmpp-server._tcp"
-      data_priority = 20
-      data_target   = "xmpp-server3.l.google.com"
-    },
-    {
-      zone          = "daniboy.dk"
-      data_name     = "_xmpp-server._tcp"
-      data_priority = 20
-      data_target   = "xmpp-server4.l.google.com"
-    },
-    {
-      zone          = "daniboy.dk"
-      data_name     = "_jabber._tcp"
-      data_priority = 5
-      data_target   = "xmpp-server.l.google.com"
-    },
-    {
-      zone          = "daniboy.dk"
-      data_name     = "_jabber._tcp"
-      data_priority = 20
-      data_target   = "xmpp-server1.l.google.com"
-    },
-    {
-      zone          = "daniboy.dk"
-      data_name     = "_jabber._tcp"
-      data_priority = 20
-      data_target   = "xmpp-server2.l.google.com"
-    },
-    {
-      zone          = "daniboy.dk"
-      data_name     = "_jabber._tcp"
-      data_priority = 20
-      data_target   = "xmpp-server3.l.google.com"
-    },
-    {
-      zone          = "daniboy.dk"
-      data_name     = "_jabber._tcp"
-      data_priority = 20
-      data_target   = "xmpp-server4.l.google.com"
-    }
-  ]
-
 }
 
 resource "cloudflare_zone" "zones" {
   for_each = {
-    #for name in local.zones : name.name => name
     for zone in local.zones : zone.zone => zone
   }
-
-  #account = {
-  #  id = "1cb328fc2007a477b2baf8e7fd6c1ee3"
-  #}
-  #name = each.value.name
   name = each.value.zone
   account = {
-      id = "1cb328fc2007a477b2baf8e7fd6c1ee3"
-    }
-  #paused = false
-  #Setting plan to free gives http 403 error.
-  #plan = "free"
+    id = "1cb328fc2007a477b2baf8e7fd6c1ee3"
+  }
   type = "full"
 }
 
-# dhjensen.dk ALIAS dhjensen.netlify.app.
 resource "cloudflare_dns_record" "cname_a_records" {
   for_each = {
     for record in local.cname_a_records : "${record.zone}.${record.name}.${record.value}" => record
   }
-
   zone_id = cloudflare_zone.zones[each.value.zone].id
   type    = each.value.type
   name    = each.value.name
   content = each.value.value
   proxied = each.value.proxied
   ttl     = 1
-
 }
 
 resource "cloudflare_dns_record" "mx_records" {
   for_each = {
     for record in local.mx_records : "${record.zone}.${record.value}" => record
   }
-
   zone_id   = cloudflare_zone.zones[each.value.zone].id
   type      = "MX"
   name      = each.value.zone
@@ -421,29 +344,6 @@ resource "cloudflare_dns_record" "mx_records" {
   proxied   = false
   ttl       = 1
 }
-
-# _xmpp-server._tcp 43200 IN SRV 5 0 5269 xmpp-server.l.google.com.
-# The following gives this error when used: Error: expected DNS record to not already be present but already exists
-# resource "cloudflare_record" "srv_records" {
-#  for_each = {
-#    for record in local.srv_records : "${record.zone}.${record.data_name}.${record.data_target}" => record
-#  }
-#
-#  zone_id   = cloudflare_zone.zones[each.value.zone].id
-#  type      = "SRV"
-#  name      = "@"
-#  proxied   = false
-#
-#  data {
-#    service  = "_sip"
-#    proto    = "_tls"
-#    name     = each.value.data_name
-#    priority = each.value.data_priority
-#    weight   = 0
-#    port     = 5269
-#    target   = each.value.data_target
-#  }
-# }
 
 resource "cloudflare_page_rule" "daniboy_redirect" {
   zone_id = cloudflare_zone.zones["daniboy.dk"].id
