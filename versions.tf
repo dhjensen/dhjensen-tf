@@ -21,6 +21,10 @@ terraform {
       source  = "go-gitea/gitea"
       version = "0.7.0"
     }
+    pihole = {
+      source = "ryanwholey/pihole"
+      version = "2.0.0-beta.1"
+    }
   }
 
   required_version = ">= 1.2"
