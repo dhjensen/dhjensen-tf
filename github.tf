@@ -101,6 +101,10 @@ locals {
       description = "OpenSpeedTest"
     },
     {
+      name        = "pi-hole-docker"
+      description = "Pi-hole blocking them ads"
+    },
+    {
       name        = "pythontest"
       description = "Python course source"
     },

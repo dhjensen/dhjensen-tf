@@ -267,6 +267,13 @@ locals {
       name    = "croc"
       value   = "r01.dhjensen.tech"
       proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "pihole"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
     }
   ]
 
