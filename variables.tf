@@ -14,3 +14,11 @@ variable "gitea_token" {
   type = string
   description = "Gitea api token"
 }
+variable "pihole_url" {
+  type = string
+  description = "Pi-hole URL"
+}
+variable "pihole_password" {
+  type = string
+  description = "Pi-hole password"
+}
