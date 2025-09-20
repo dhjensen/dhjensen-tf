@@ -156,7 +156,7 @@ resource "github_repository" "repository" {
   has_projects            = false
   has_wiki                = false
   allow_merge_commit      = true
-  allow_squash_merge      = false
+  allow_squash_merge      = true
   allow_rebase_merge      = false
   delete_branch_on_merge  = true
   has_downloads           = false
