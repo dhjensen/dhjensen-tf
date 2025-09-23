@@ -204,3 +204,22 @@ resource "github_repository_ruleset" "default_branch_protection" {
 output "ssh_clone_url" {
   value = [for rep in github_repository.repository : rep.ssh_clone_url]
 }
+
+resource "null_resource" "git_clone" {
+  for_each      = { for repo in local.repositories : repo.name => repo }
+
+  provisioner "remote-exec" {
+    inline = [
+      "cd ${each.value.name} || (git clone ${github_repository.repository[each.value.name].http_clone_url} ${each.value.name})",
+      "git -C ~/${each.value.name} pull"
+    ]
+
+    connection {
+      type        = "ssh"
+      user        = var.null_username
+      private_key = file(var.null_private_key)
+      host        = var.null_ip_address
+    }
+  }
+  depends_on    = [github_repository.repository]
+}

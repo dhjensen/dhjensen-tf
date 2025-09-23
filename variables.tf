@@ -22,3 +22,15 @@ variable "pihole_password" {
   type = string
   description = "Pi-hole password"
 }
+variable "null_username" {
+  type = string
+  description = "SSH username"
+}
+variable "null_private_key" {
+  type = string
+  description = "Path to SSH private key"
+}
+variable "null_ip_address" {
+  type = string
+  description = "IP address of the ssh host"
+}

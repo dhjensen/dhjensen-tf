@@ -22,8 +22,12 @@ terraform {
       version = "0.7.0"
     }
     pihole = {
-      source = "ryanwholey/pihole"
+      source  = "ryanwholey/pihole"
       version = "2.0.0-beta.1"
+    }
+    null = {
+      source  = "hashicorp/null"
+      version = "3.2.4"
     }
   }
 
