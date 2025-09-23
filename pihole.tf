@@ -114,8 +114,19 @@ locals {
     {
       name = "pihole.dhjensen.tech"
       cname = "pi2.dhjensen.tech"
+    },
+    {
+      name = "atlas-pc.dhjensen.tech"
+      cname = "daniel-pc.dhjensen.tech"
+    },
+    {
+      name = "atlas.dhjensen.tech"
+      cname = "pi2.dhjensen.tech"
+    },
+    {
+      name = "duplicati-pc.dhjensen.tech"
+      cname = "daniel-pc.dhjensen.tech"
     }
-
   ]
 }
 
