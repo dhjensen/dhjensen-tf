@@ -1,6 +1,10 @@
 locals {
   repositories = [
     {
+      name        = "atlas-docker"
+      description = "Atlas network visualization tool"
+    },
+    {
       name        = "beszel-agent"
       description = "Beszel agent with Nvidia support"
     },
@@ -197,3 +201,6 @@ resource "github_repository_ruleset" "default_branch_protection" {
   repository  = github_repository.repository[each.value.name].name
 }
 
+output "ssh_clone_url" {
+  value = [for rep in github_repository.repository : rep.ssh_clone_url]
+}
