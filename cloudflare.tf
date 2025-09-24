@@ -281,6 +281,13 @@ locals {
       name    = "atlas"
       value   = "r01.dhjensen.tech"
       proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "vault"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
     }
   ]
 
