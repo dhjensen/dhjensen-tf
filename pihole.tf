@@ -126,6 +126,10 @@ locals {
     {
       name = "duplicati-pc.dhjensen.tech"
       cname = "daniel-pc.dhjensen.tech"
+    },
+    {
+      name = "vault.dhjensen.tech"
+      cname = "pi2.dhjensen.tech"
     }
   ]
 }
