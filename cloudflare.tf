@@ -288,6 +288,13 @@ locals {
       name    = "vault"
       value   = "r01.dhjensen.tech"
       proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "pi2.vault"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
     }
   ]
 

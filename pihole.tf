@@ -7,6 +7,14 @@ locals {
     {
       name = "daniel-pc.dhjensen.tech"
       value = "192.168.0.64"
+    },
+    {
+      name = "vault.dhjensen.tech"
+      value = "192.168.0.76"
+    },
+    {
+      name = "vault.dhjensen.tech"
+      value = "192.168.0.64"
     }
   ]
 
@@ -128,8 +136,12 @@ locals {
       cname = "daniel-pc.dhjensen.tech"
     },
     {
-      name = "vault.dhjensen.tech"
+      name = "pi2.vault.dhjensen.tech"
       cname = "pi2.dhjensen.tech"
+    },
+    {
+      name = "daniel-pc.vault.dhjensen.tech"
+      cname = "daniel-pc.dhjensen.tech"
     }
   ]
 }
