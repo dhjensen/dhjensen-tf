@@ -292,7 +292,21 @@ locals {
     {
       zone    = "dhjensen.tech"
       type    = "CNAME"
-      name    = "pi2.vault"
+      name    = "pi2-node1.vault"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "pi2-node2.vault"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "pi2-node3.vault"
       value   = "r01.dhjensen.tech"
       proxied = "false"
     }
