@@ -7,15 +7,15 @@ locals {
     {
       name = "daniel-pc.dhjensen.tech"
       value = "192.168.0.64"
-    },
-    {
-      name = "vault.dhjensen.tech"
-      value = "192.168.0.76"
-    },
-    {
-      name = "vault.dhjensen.tech"
-      value = "192.168.0.64"
-    }
+    }#,
+#     {
+#       name = "vault.dhjensen.tech"
+#       value = "192.168.0.76"
+#     },
+#     {
+#       name = "vault.dhjensen.tech"
+#       value = "192.168.0.64"
+#     }
   ]
 
   pihole_cname_records = [
@@ -158,6 +158,14 @@ locals {
     {
       name = "daniel-pc-node3.vault.dhjensen.tech"
       cname = "daniel-pc.dhjensen.tech"
+    },
+    {
+      name = "traefik-pc.dhjensen.tech"
+      cname = "daniel-pc.dhjensen.tech"
+    },
+    {
+      name = "traefik.dhjensen.tech"
+      cname = "pi2.dhjensen.tech"
     }
   ]
 }
