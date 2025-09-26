@@ -184,6 +184,11 @@ locals {
       name        = "whats-up-docker"
       description = "What's up Docker with ntfy inegration"
       clone       = true
+    },
+    {
+      name        = "traefik-docker"
+      description = "Traefik reverse proxy"
+      clone       = true
     }
   ]
 }
