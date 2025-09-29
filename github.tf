@@ -189,6 +189,11 @@ locals {
       name        = "traefik-docker"
       description = "Traefik reverse proxy"
       clone       = true
+    },
+    {
+      name        = "crowdsec-docker"
+      description = "Crowdsec dynamic IP banlist"
+      clone       = true
     }
   ]
 }
