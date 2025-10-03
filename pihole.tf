@@ -168,10 +168,6 @@ locals {
       cname = "pi2.dhjensen.tech"
     },
     {
-      name = "matomo.dhjensen.dk"
-      cname = "pi2.dhjensen.tech"
-    },
-    {
       name = "crowdsec.dhjensen.tech"
       cname = "pi2.dhjensen.tech"
     }
