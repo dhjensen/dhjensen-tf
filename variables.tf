@@ -47,10 +47,6 @@ variable "oci_private_key_path" {
   type = string
   description = "The path (including filename) of the private key stored on the computer"
 }
-# variable "oci_private_key_password" {
-#   type = string
-#   description = "Passphrase used for the key, if it's encrypted"
-# }
 variable "oci_fingerprint" {
   type = string
   description = "Fingerprint for the key pair being used"

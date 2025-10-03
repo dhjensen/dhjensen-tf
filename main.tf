@@ -17,7 +17,6 @@ provider "oci" {
   tenancy_ocid          = var.oci_tenancy_ocid
   user_ocid             = var.oci_user_ocid
   private_key_path      = var.oci_private_key_path
-  #private_key_password  = var.oci_private_key_password
   fingerprint           = var.oci_fingerprint
   region                = var.oci_region
 }
