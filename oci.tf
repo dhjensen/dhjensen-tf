@@ -30,17 +30,25 @@ resource "oci_core_network_security_group" "dhjensen-network-security-group-001"
   vcn_id            = oci_core_vcn.dhjensen-vcn-001.id
   display_name      = "dhjensen-network-security-group-001"
 }
-resource "oci_core_network_security_group_security_rule" "dhjensen-network-security-group-rule-001" {
+resource "oci_core_network_security_group_security_rule" "dhjensen-network-security-group-rule-egress" {
   network_security_group_id = oci_core_network_security_group.dhjensen-network-security-group-001.id
-  direction                 = "INGRESS"
-  protocol                  = 6
-  description               = "Only allow SSH from 87.61.92.76"
-  source                    = "87.61.92.76/32"
-  source_type               = "CIDR_BLOCK"
+  description       = "Allow EGRESS for all hosts"
+  destination       = "0.0.0.0/0"
+  destination_type  = "CIDR_BLOCK"
+  direction         = "EGRESS"
+  protocol          = "all"
+}
+resource "oci_core_network_security_group_security_rule" "dhjensen-network-security-group-rule-ingress" {
+  network_security_group_id = oci_core_network_security_group.dhjensen-network-security-group-001.id
+  description       = "Only allow SSH from 87.61.92.76"
+  direction         = "INGRESS"
+  protocol          = 6
+  source            = "87.61.92.76/32"
+  source_type       = "CIDR_BLOCK"
   tcp_options {
     destination_port_range {
-      max = 22
-      min = 22
+      max           = 22
+      min           = 22
     }
   }
 }
