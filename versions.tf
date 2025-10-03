@@ -10,7 +10,7 @@ terraform {
 
   required_providers {
     cloudflare = {
-      source = "cloudflare/cloudflare"
+      source  = "cloudflare/cloudflare"
       version = "5.10.1"
     }
     github = {
@@ -28,6 +28,10 @@ terraform {
     null = {
       source  = "hashicorp/null"
       version = "3.2.4"
+    }
+    oci = {
+      source  = "oracle/oci"
+      version = "7.21.0"
     }
   }
 
