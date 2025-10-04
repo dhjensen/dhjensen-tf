@@ -1,4 +1,17 @@
 locals {
+  hosts = [
+    {
+      ip    = "192.168.0.76"
+      user  = "dhjensen"
+    },
+    {
+      ip    = "89.168.73.78"
+      user  = "ubuntu"
+    }
+  ]
+}
+
+locals {
   repositories = [
     {
       name        = "atlas-docker"
@@ -197,6 +210,17 @@ locals {
     }
   ]
 }
+locals {
+  host_repo_map = merge([
+    for host in local.hosts : {
+      for repo in local.repositories : "${host.ip}.${repo.name}" => {
+        ip        = host.ip
+        user      = host.user
+        reponame  = repo.name
+      } if repo.clone
+    }
+  ]...)
+}
 
 resource "github_repository" "repository" {
   for_each = {
@@ -257,23 +281,19 @@ output "ssh_clone_url" {
 }
 
 resource "null_resource" "git_clone" {
-  for_each      = {
-    for repo in local.repositories :
-    repo.name => repo
-    if repo.clone
-  }
+  for_each = local.host_repo_map
 
   provisioner "remote-exec" {
     inline = [
-      "cd ${each.value.name} || (git clone ${github_repository.repository[each.value.name].http_clone_url} ${each.value.name})",
-      "git -C ~/${each.value.name} pull"
+      "cd ${each.value.reponame} || (git clone ${github_repository.repository[each.value.reponame].http_clone_url} ${each.value.reponame})",
+      "git -C ~/${each.value.reponame} pull"
     ]
 
     connection {
       type        = "ssh"
-      user        = var.null_username
+      user        = each.value.user
       private_key = file(var.null_private_key)
-      host        = var.null_ip_address
+      host        = each.value.ip
     }
   }
   depends_on    = [github_repository.repository]

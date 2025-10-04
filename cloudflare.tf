@@ -46,9 +46,9 @@ locals {
     },
     {
       zone    = "dhjensen.dk"
-      type    = "CNAME"
+      type    = "A"
       name    = "matomo"
-      value   = "instance-001.dhjensensubnet.dhjensenvcn001.oraclevcn.com"
+      value   = "89.168.73.78"
       proxied = "false"
     },
     {
