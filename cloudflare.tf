@@ -148,6 +148,13 @@ locals {
       name    = "traefik-oci"
       value   = "89.168.73.78"
       proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "beszel"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
     }
   ]
 
