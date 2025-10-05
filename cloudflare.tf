@@ -169,6 +169,20 @@ locals {
       name    = "dozzle-oci"
       value   = "instance001.dhjensen.tech"
       proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "ntfy"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "wud-oci"
+      value   = "instance001.dhjensen.tech"
+      proxied = "false"
     }
   ]
 
