@@ -183,6 +183,13 @@ locals {
       name    = "wud-oci"
       value   = "instance001.dhjensen.tech"
       proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "duplicati-oci"
+      value   = "instance001.dhjensen.tech"
+      proxied = "false"
     }
   ]
 
