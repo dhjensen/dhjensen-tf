@@ -207,6 +207,11 @@ locals {
       name        = "crowdsec-docker"
       description = "Crowdsec dynamic IP banlist"
       clone       = true
+    },
+    {
+      name        = "beszel-agent-normal"
+      description = "Beszel agent"
+      clone       = true
     }
   ]
 }
