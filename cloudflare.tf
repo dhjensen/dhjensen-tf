@@ -123,6 +123,13 @@ locals {
     },
     {
       zone    = "dhjensen.tech"
+      type    = "A"
+      name    = "instance001"
+      value   = "89.168.73.78"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
       type    = "CNAME"
       name    = "wg"
       value   = "r01.dhjensen.tech"
@@ -144,9 +151,9 @@ locals {
     },
     {
       zone    = "dhjensen.tech"
-      type    = "A"
+      type    = "CNAME"
       name    = "traefik-oci"
-      value   = "89.168.73.78"
+      value   = "instance001.dhjensen.tech"
       proxied = "false"
     },
     {
@@ -154,6 +161,13 @@ locals {
       type    = "CNAME"
       name    = "beszel"
       value   = "r01.dhjensen.tech"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "dozzle-oci"
+      value   = "instance001.dhjensen.tech"
       proxied = "false"
     }
   ]
