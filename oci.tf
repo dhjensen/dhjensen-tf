@@ -1,8 +1,3 @@
-variable "oci_core_instance_ssh_authorized_keys" {
-  type = string
-  description = "Provide one or more public SSH keys to be included in the ~/.ssh/authorized_keys file for the default user on the instance. Use a newline character to separate multiple keys"
-}
-
 resource "oci_core_vcn" "dhjensen-vcn-001" {
   cidr_blocks      = ["10.0.0.0/16"]
   compartment_id   = var.oci_tenancy_ocid
@@ -49,6 +44,34 @@ resource "oci_core_network_security_group_security_rule" "dhjensen-network-secur
     destination_port_range {
       max           = 22
       min           = 22
+    }
+  }
+}
+resource "oci_core_network_security_group_security_rule" "dhjensen-network-security-group-rule-ingress-http" {
+  network_security_group_id = oci_core_network_security_group.dhjensen-network-security-group-001.id
+  description       = "Only allow HTTP from 87.61.92.76"
+  direction         = "INGRESS"
+  protocol          = 6
+  source            = "87.61.92.76/32"
+  source_type       = "CIDR_BLOCK"
+  tcp_options {
+    destination_port_range {
+      max           = 80
+      min           = 80
+    }
+  }
+}
+resource "oci_core_network_security_group_security_rule" "dhjensen-network-security-group-rule-ingress-https" {
+  network_security_group_id = oci_core_network_security_group.dhjensen-network-security-group-001.id
+  description       = "Only allow HTTPS from 87.61.92.76"
+  direction         = "INGRESS"
+  protocol          = 6
+  source            = "87.61.92.76/32"
+  source_type       = "CIDR_BLOCK"
+  tcp_options {
+    destination_port_range {
+      max           = 443
+      min           = 443
     }
   }
 }
