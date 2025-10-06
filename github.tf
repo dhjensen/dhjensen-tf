@@ -5,7 +5,7 @@ locals {
       user  = "dhjensen"
     },
     {
-      ip    = "89.168.73.78"
+      ip    = oci_core_instance.dhjensen-instance-001.public_ip
       user  = "ubuntu"
     }
   ]
