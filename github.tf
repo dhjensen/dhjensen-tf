@@ -280,11 +280,29 @@ resource "github_repository_ruleset" "default_branch_protection" {
   }
   repository  = github_repository.repository[each.value.name].name
 }
-
 output "ssh_clone_url" {
   value = [for rep in github_repository.repository : rep.ssh_clone_url]
 }
-
+resource "null_resource" "install_git" {
+  for_each = {
+    for host in local.hosts : host.ip => host
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "export DEBIAN_FRONTEND=noninteractive",
+      "sudo apt-get update -y",
+      "sudo apt-get install -y git"
+    ]
+    connection {
+      type        = "ssh"
+      user        = each.value.user
+      private_key = file(var.null_private_key)
+      host        = each.value.ip
+      timeout     = "2m"
+    }
+  }
+  depends_on    = [oci_core_instance.dhjensen-instance-001]
+}
 resource "null_resource" "git_clone" {
   for_each = local.host_repo_map
 
@@ -301,5 +319,5 @@ resource "null_resource" "git_clone" {
       host        = each.value.ip
     }
   }
-  depends_on    = [github_repository.repository]
+  depends_on    = [null_resource.install_git, github_repository.repository]
 }

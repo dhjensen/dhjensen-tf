@@ -99,14 +99,14 @@ resource "oci_core_internet_gateway" "dhjensen-internet-gateway-001" {
 }
 resource "oci_core_instance" "dhjensen-instance-001" {
   agent_config {
-    is_management_disabled = false
-    is_monitoring_disabled = false
+    is_management_disabled = true
+    is_monitoring_disabled = true
     plugins_config {
       desired_state = "DISABLED"
       name          = "Vulnerability Scanning"
     }
     plugins_config {
-      desired_state = "ENABLED"
+      desired_state = "DISABLED"
       name          = "Management Agent"
     }
     plugins_config {
@@ -118,7 +118,7 @@ resource "oci_core_instance" "dhjensen-instance-001" {
       name          = "Compute RDMA GPU Monitoring"
     }
     plugins_config {
-      desired_state = "ENABLED"
+      desired_state = "DISABLED"
       name          = "Compute Instance Monitoring"
     }
     plugins_config {
@@ -160,16 +160,6 @@ resource "oci_core_instance" "dhjensen-instance-001" {
     are_legacy_imds_endpoints_disabled = false
   }
   is_pv_encryption_in_transit_enabled = true
-  launch_volume_attachments {
-    display_name  = "dhjensen-volume-001"
-    launch_create_volume_details {
-      display_name          = "dhjensen-volume-001"
-      size_in_gbs           = "50"
-      volume_creation_type  = "ATTRIBUTES"
-      vpus_per_gb           = 0
-    }
-    type          = "paravirtualized"
-  }
   metadata = {
     "ssh_authorized_keys" = var.oci_core_instance_ssh_authorized_keys
   }
@@ -191,4 +181,18 @@ resource "oci_core_instance" "dhjensen-instance-001" {
     is_preserve_boot_volume_enabled = false
   }
   state = "RUNNING"
+}
+resource "oci_core_volume" "dhjensen-volume-001" {
+  availability_domain = oci_core_instance.dhjensen-instance-001.availability_domain
+  compartment_id      = var.oci_tenancy_ocid
+  display_name        = "dhjensen-volume-001"
+  size_in_gbs         = 50
+  vpus_per_gb         = 0
+}
+resource "oci_core_volume_attachment" "dhjensen-volume-attachment-001" {
+  attachment_type                     = "paravirtualized"
+  display_name                        = "dhjensen-volume-attachment-001"
+  instance_id                         = oci_core_instance.dhjensen-instance-001.id
+  is_pv_encryption_in_transit_enabled = true
+  volume_id                           = oci_core_volume.dhjensen-volume-001.id
 }
