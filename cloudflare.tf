@@ -125,7 +125,7 @@ locals {
       zone    = "dhjensen.tech"
       type    = "A"
       name    = "instance001"
-      value   = "89.168.73.78"
+      value   = oci_core_instance.dhjensen-instance-001.public_ip
       proxied = "false"
     },
     {
@@ -247,12 +247,13 @@ resource "cloudflare_dns_record" "cname_a_records" {
   for_each = {
     for record in local.cname_a_records : "${record.zone}.${record.name}.${record.value}" => record
   }
-  zone_id = cloudflare_zone.zones[each.value.zone].id
-  type    = each.value.type
-  name    = each.value.name
-  content = each.value.value
-  proxied = each.value.proxied
-  ttl     = 1
+  zone_id     = cloudflare_zone.zones[each.value.zone].id
+  type        = each.value.type
+  name        = each.value.name
+  content     = each.value.value
+  proxied     = each.value.proxied
+  ttl         = 1
+  depends_on  = [oci_core_instance.dhjensen-instance-001]
 }
 
 resource "cloudflare_dns_record" "mx_records" {

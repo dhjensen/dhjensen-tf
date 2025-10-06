@@ -100,13 +100,13 @@ resource "oci_core_internet_gateway" "dhjensen-internet-gateway-001" {
 resource "oci_core_instance" "dhjensen-instance-001" {
   agent_config {
     is_management_disabled = false
-    is_monitoring_disabled = true
+    is_monitoring_disabled = false
     plugins_config {
       desired_state = "DISABLED"
       name          = "Vulnerability Scanning"
     }
     plugins_config {
-      desired_state = "DISABLED"
+      desired_state = "ENABLED"
       name          = "Management Agent"
     }
     plugins_config {
@@ -118,7 +118,7 @@ resource "oci_core_instance" "dhjensen-instance-001" {
       name          = "Compute RDMA GPU Monitoring"
     }
     plugins_config {
-      desired_state = "DISABLED"
+      desired_state = "ENABLED"
       name          = "Compute Instance Monitoring"
     }
     plugins_config {
