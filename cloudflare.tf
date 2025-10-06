@@ -48,7 +48,7 @@ locals {
       zone    = "dhjensen.dk"
       type    = "A"
       name    = "matomo"
-      value   = "89.168.73.78"
+      value   = oci_core_instance.dhjensen-instance-001.public_ip
       proxied = "false"
     },
     {
