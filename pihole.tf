@@ -2,11 +2,11 @@ locals {
   pihole_a_records = [
     {
       name = "pi2.dhjensen.tech"
-      value = "192.168.0.76"
+      value = "192.168.86.22"
     },
     {
       name = "daniel-pc.dhjensen.tech"
-      value = "192.168.0.64"
+      value = "192.168.86.21"
     }#,
 #     {
 #       name = "vault.dhjensen.tech"
