@@ -1,4 +1,17 @@
 locals {
+  hosts = [
+    {
+      ip    = "192.168.0.76"
+      user  = "dhjensen"
+    },
+    {
+      ip    = oci_core_instance.dhjensen-instance-001.public_ip
+      user  = "ubuntu"
+    }
+  ]
+}
+
+locals {
   repositories = [
     {
       name        = "atlas-docker"
@@ -194,8 +207,24 @@ locals {
       name        = "crowdsec-docker"
       description = "Crowdsec dynamic IP banlist"
       clone       = true
+    },
+    {
+      name        = "beszel-agent-normal"
+      description = "Beszel agent"
+      clone       = true
     }
   ]
+}
+locals {
+  host_repo_map = merge([
+    for host in local.hosts : {
+      for repo in local.repositories : "${host.ip}.${repo.name}" => {
+        ip        = host.ip
+        user      = host.user
+        reponame  = repo.name
+      } if repo.clone
+    }
+  ]...)
 }
 
 resource "github_repository" "repository" {
@@ -251,30 +280,44 @@ resource "github_repository_ruleset" "default_branch_protection" {
   }
   repository  = github_repository.repository[each.value.name].name
 }
-
 output "ssh_clone_url" {
   value = [for rep in github_repository.repository : rep.ssh_clone_url]
 }
-
-resource "null_resource" "git_clone" {
-  for_each      = {
-    for repo in local.repositories :
-    repo.name => repo
-    if repo.clone
+resource "null_resource" "install_git" {
+  for_each = {
+    for host in local.hosts : host.ip => host
   }
+  provisioner "remote-exec" {
+    inline = [
+      "export DEBIAN_FRONTEND=noninteractive",
+      "sudo apt-get update -y",
+      "sudo apt-get install -y git"
+    ]
+    connection {
+      type        = "ssh"
+      user        = each.value.user
+      private_key = file(var.null_private_key)
+      host        = each.value.ip
+      timeout     = "2m"
+    }
+  }
+  depends_on    = [oci_core_instance.dhjensen-instance-001]
+}
+resource "null_resource" "git_clone" {
+  for_each = local.host_repo_map
 
   provisioner "remote-exec" {
     inline = [
-      "cd ${each.value.name} || (git clone ${github_repository.repository[each.value.name].http_clone_url} ${each.value.name})",
-      "git -C ~/${each.value.name} pull"
+      "cd ${each.value.reponame} || (git clone ${github_repository.repository[each.value.reponame].http_clone_url} ${each.value.reponame})",
+      "git -C ~/${each.value.reponame} pull"
     ]
 
     connection {
       type        = "ssh"
-      user        = var.null_username
+      user        = each.value.user
       private_key = file(var.null_private_key)
-      host        = var.null_ip_address
+      host        = each.value.ip
     }
   }
-  depends_on    = [github_repository.repository]
+  depends_on    = [null_resource.install_git, github_repository.repository]
 }

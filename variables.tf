@@ -34,3 +34,28 @@ variable "null_ip_address" {
   type = string
   description = "IP address of the ssh host"
 }
+# Oracle Cloud Infrastructure variables
+variable "oci_tenancy_ocid" {
+  type = string
+  description = "OCID of the tenancy"
+}
+variable "oci_user_ocid" {
+  type = string
+  description = "OCID of the user calling the API"
+}
+variable "oci_private_key_path" {
+  type = string
+  description = "The path (including filename) of the private key stored on the computer"
+}
+variable "oci_fingerprint" {
+  type = string
+  description = "Fingerprint for the key pair being used"
+}
+variable "oci_region" {
+  type = string
+  description = "An OCI region"
+}
+variable "oci_core_instance_ssh_authorized_keys" {
+  type = string
+  description = "Provide one or more public SSH keys to be included in the ~/.ssh/authorized_keys file for the default user on the instance. Use a newline character to separate multiple keys"
+}

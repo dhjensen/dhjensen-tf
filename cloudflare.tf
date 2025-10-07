@@ -123,6 +123,13 @@ locals {
     },
     {
       zone    = "dhjensen.tech"
+      type    = "A"
+      name    = "instance001"
+      value   = oci_core_instance.dhjensen-instance-001.public_ip
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
       type    = "CNAME"
       name    = "wg"
       value   = "r01.dhjensen.tech"
@@ -140,6 +147,48 @@ locals {
       type    = "CNAME"
       name    = "croc"
       value   = "r01.dhjensen.tech"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "traefik-oci"
+      value   = "instance001.dhjensen.tech"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "beszel"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "dozzle-oci"
+      value   = "instance001.dhjensen.tech"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "ntfy"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "wud-oci"
+      value   = "instance001.dhjensen.tech"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "duplicati-oci"
+      value   = "instance001.dhjensen.tech"
       proxied = "false"
     }
   ]
@@ -198,12 +247,13 @@ resource "cloudflare_dns_record" "cname_a_records" {
   for_each = {
     for record in local.cname_a_records : "${record.zone}.${record.name}.${record.value}" => record
   }
-  zone_id = cloudflare_zone.zones[each.value.zone].id
-  type    = each.value.type
-  name    = each.value.name
-  content = each.value.value
-  proxied = each.value.proxied
-  ttl     = 1
+  zone_id     = cloudflare_zone.zones[each.value.zone].id
+  type        = each.value.type
+  name        = each.value.name
+  content     = each.value.value
+  proxied     = each.value.proxied
+  ttl         = 1
+  depends_on  = [oci_core_instance.dhjensen-instance-001]
 }
 
 resource "cloudflare_dns_record" "mx_records" {
