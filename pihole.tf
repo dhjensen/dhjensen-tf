@@ -44,10 +44,6 @@ locals {
       cname = "daniel-pc.dhjensen.tech"
     },
     {
-      name = "ntfy.dhjensen.tech"
-      cname = "pi2.dhjensen.tech"
-    },
-    {
       name = "maubot.dhjensen.tech"
       cname = "pi2.dhjensen.tech"
     },

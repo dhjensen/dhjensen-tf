@@ -59,3 +59,15 @@ variable "oci_core_instance_ssh_authorized_keys" {
   type = string
   description = "Provide one or more public SSH keys to be included in the ~/.ssh/authorized_keys file for the default user on the instance. Use a newline character to separate multiple keys"
 }
+variable "infisical_host" {
+  type = string
+  description = "HTTPS FQDN"
+}
+variable "infisical_client_id" {
+  type = string
+  description = "Machine client-id"
+}
+variable "infisical_client_secret" {
+  type = string
+  description = "Machine client-secret"
+}
