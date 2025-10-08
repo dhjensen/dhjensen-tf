@@ -15,7 +15,7 @@ locals {
     }
   ]
 
-  cname_a_records = [
+  cname_a_txt_records = [
     {
       zone    = "dhjensen.dk"
       type    = "A"
@@ -42,6 +42,27 @@ locals {
       type    = "A"
       name    = "dhjensen.dk"
       value   = "185.199.111.153"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.dk"
+      type    = "TXT"
+      name    = "@"
+      value   = "protonmail-verification=c98d9bbfeba5e00d61e16edfaa84b9a36bf6e565"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.dk"
+      type    = "TXT"
+      name    = "@"
+      value   = "v=spf1 include:_spf.protonmail.ch ~all"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.dk"
+      type    = "TXT"
+      name    = "_dmarc"
+      value   = "v=DMARC1; p=quarantine"
       proxied = "false"
     },
     {
@@ -116,6 +137,27 @@ locals {
     },
     {
       zone    = "dhjensen.tech"
+      type    = "TXT"
+      name    = "@"
+      value   = "protonmail-verification=322e4d97500ae13178e3aeafa5f9de4565d76b2e"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "TXT"
+      name    = "@"
+      value   = "v=spf1 include:_spf.protonmail.ch ~all"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "TXT"
+      name    = "_dmarc"
+      value   = "v=DMARC1; p=quarantine"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
       type    = "A"
       name    = "r01"
       value   = "87.61.92.76"
@@ -174,7 +216,7 @@ locals {
       zone    = "dhjensen.tech"
       type    = "CNAME"
       name    = "ntfy"
-      value   = "r01.dhjensen.tech"
+      value   = "instance001.dhjensen.tech"
       proxied = "false"
     },
     {
@@ -190,44 +232,79 @@ locals {
       name    = "duplicati-oci"
       value   = "instance001.dhjensen.tech"
       proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "A"
+      name    = "infisical"
+      value   = "87.61.92.76"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.dk"
+      type    = "CNAME"
+      name    = "protonmail._domainkey"
+      value   = "protonmail.domainkey.dsxjqdmj5xmixf6pjrf3dgeuz5knnis7bamn7alum2utzakeciufa.domains.proton.ch"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.dk"
+      type    = "CNAME"
+      name    = "protonmail2._domainkey"
+      value   = "protonmail2.domainkey.dsxjqdmj5xmixf6pjrf3dgeuz5knnis7bamn7alum2utzakeciufa.domains.proton.ch"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.dk"
+      type    = "CNAME"
+      name    = "protonmail3._domainkey"
+      value   = "protonmail3.domainkey.dsxjqdmj5xmixf6pjrf3dgeuz5knnis7bamn7alum2utzakeciufa.domains.proton.ch"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "protonmail._domainkey"
+      value   = "protonmail.domainkey.dq4hqk5z5keqv2ovgcyoxjehwq2hlhitsu6u2446qo75fteyunrpa.domains.proton.ch"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "protonmail2._domainkey"
+      value   = "protonmail2.domainkey.dq4hqk5z5keqv2ovgcyoxjehwq2hlhitsu6u2446qo75fteyunrpa.domains.proton.ch"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "protonmail3._domainkey"
+      value   = "protonmail3.domainkey.dq4hqk5z5keqv2ovgcyoxjehwq2hlhitsu6u2446qo75fteyunrpa.domains.proton.ch"
+      proxied = "false"
     }
+    
   ]
 
   mx_records = [
     {
-      zone      = "daniboy.dk"
-      value     = "aspmx.l.google.com"
+      zone      = "dhjensen.dk"
+      value     = "mail.protonmail.ch"
       priority  = 10
     },
     {
-      zone      = "daniboy.dk"
-      value     = "alt1.aspmx.l.google.com"
+      zone      = "dhjensen.dk"
+      value     = "mailsec.protonmail.ch"
       priority  = 20
     },
     {
-      zone      = "daniboy.dk"
-      value     = "alt2.aspmx.l.google.com"
+      zone      = "dhjensen.tech"
+      value     = "mail.protonmail.ch"
+      priority  = 10
+    },
+    {
+      zone      = "dhjensen.tech"
+      value     = "mailsec.protonmail.ch"
       priority  = 20
-    },
-    {
-      zone      = "daniboy.dk"
-      value     = "aspmx2.googlemail.com"
-      priority  = 30
-    },
-    {
-      zone      = "daniboy.dk"
-      value     = "aspmx3.googlemail.com"
-      priority  = 30
-    },
-    {
-      zone      = "daniboy.dk"
-      value     = "aspmx4.googlemail.com"
-      priority  = 30
-    },
-    {
-      zone      = "daniboy.dk"
-      value     = "aspmx5.googlemail.com"
-      priority  = 30
     }
   ]
 }
@@ -245,7 +322,7 @@ resource "cloudflare_zone" "zones" {
 
 resource "cloudflare_dns_record" "cname_a_records" {
   for_each = {
-    for record in local.cname_a_records : "${record.zone}.${record.name}.${record.value}" => record
+    for record in local.cname_a_txt_records : "${record.zone}.${record.name}.${record.value}" => record
   }
   zone_id     = cloudflare_zone.zones[each.value.zone].id
   type        = each.value.type

@@ -33,6 +33,10 @@ terraform {
       source  = "oracle/oci"
       version = "7.21.0"
     }
+    infisical = {
+      source = "Infisical/infisical"
+      version = "0.15.39"
+    }
   }
 
   required_version = ">= 1.13"
