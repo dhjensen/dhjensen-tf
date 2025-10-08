@@ -190,6 +190,20 @@ locals {
       name    = "duplicati-oci"
       value   = "instance001.dhjensen.tech"
       proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "A"
+      name    = "infisical"
+      value   = oci_core_instance.dhjensen-instance-001.public_ip
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "A"
+      name    = "infisical"
+      value   = "87.61.92.76"
+      proxied = "false"
     }
   ]
 

@@ -170,6 +170,10 @@ locals {
     {
       name = "crowdsec.dhjensen.tech"
       cname = "pi2.dhjensen.tech"
+    },
+    {
+      name = "infisical.dhjensen.tech"
+      cname = "pi2.dhjensen.tech"
     }
   ]
 }

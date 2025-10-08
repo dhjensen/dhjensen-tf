@@ -1,7 +1,7 @@
 locals {
   hosts = [
     {
-      ip    = "192.168.0.76"
+      ip    = "192.168.86.22"
       user  = "dhjensen"
     },
     {
@@ -211,6 +211,11 @@ locals {
     {
       name        = "beszel-agent-normal"
       description = "Beszel agent"
+      clone       = true
+    },
+    {
+      name        = "infisical-docker"
+      description = "Infisical is the open-source platform for secrets management, PKI, and SSH access."
       clone       = true
     }
   ]
