@@ -217,6 +217,11 @@ locals {
       name        = "infisical-docker"
       description = "Infisical is the open-source platform for secrets management, PKI, and SSH access."
       clone       = true
+    },
+    {
+      name        = "workstation-ansible"
+      description = "Configure Arch Linux workstation with Ansible"
+      clone       = false
     }
   ]
 }
