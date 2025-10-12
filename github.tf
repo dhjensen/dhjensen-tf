@@ -24,6 +24,11 @@ locals {
       clone       = false
     },
     {
+      name        = "beszel-agent-intel"
+      description = "Beszel agent with Intel support"
+      clone       = false
+    },
+    {
       name        = "beszel-docker"
       description = "Beszel system and docker monitoring"
       clone       = true
