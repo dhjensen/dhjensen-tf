@@ -7,15 +7,11 @@ locals {
     {
       name = "daniel-pc.dhjensen.tech"
       value = "192.168.86.21"
-    }#,
-#     {
-#       name = "vault.dhjensen.tech"
-#       value = "192.168.0.76"
-#     },
-#     {
-#       name = "vault.dhjensen.tech"
-#       value = "192.168.0.64"
-#     }
+    },
+    {
+      name = "dhj-laptop.dhjensen.tech"
+      value = "192.168.86.35"
+    }
   ]
 
   pihole_cname_records = [
