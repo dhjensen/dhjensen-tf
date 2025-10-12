@@ -15,6 +15,12 @@ resource "infisical_project_user" "dhjensen" {
     }
   ]
 }
+resource "infisical_project_environment" "prod" {
+  name       = "Prod"
+  project_id = infisical_project.dhjensen.id
+  slug       = "prod"
+  position   = 1
+}
 resource "infisical_project_environment" "daniel-pc" {
   name       = "daniel-pc"
   project_id = infisical_project.dhjensen.id
@@ -32,6 +38,15 @@ resource "infisical_project_environment" "instance-001" {
   project_id = infisical_project.dhjensen.id
   slug       = "instance001"
   position   = 3
+}
+resource "infisical_secret_folder" "folders-prod" {
+  for_each = {
+    for repo in local.repositories : repo.name => repo
+  }
+  environment_slug  = infisical_project_environment.prod.slug
+  folder_path       = "/"
+  name              = each.value.name
+  project_id        = infisical_project.dhjensen.id
 }
 resource "infisical_secret_folder" "folders-daniel-pc" {
   for_each = {
