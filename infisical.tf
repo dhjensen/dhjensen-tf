@@ -25,19 +25,19 @@ resource "infisical_project_environment" "daniel-pc" {
   name       = "daniel-pc"
   project_id = infisical_project.dhjensen.id
   slug       = "danielpc"
-  position   = 1
+  position   = 2
 }
 resource "infisical_project_environment" "pi2" {
   name       = "pi2"
   project_id = infisical_project.dhjensen.id
   slug       = "pi2"
-  position   = 2
+  position   = 3
 }
 resource "infisical_project_environment" "instance-001" {
   name       = "instance-001"
   project_id = infisical_project.dhjensen.id
   slug       = "instance001"
-  position   = 3
+  position   = 4
 }
 resource "infisical_secret_folder" "folders-prod" {
   for_each = {
