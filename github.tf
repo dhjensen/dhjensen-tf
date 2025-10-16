@@ -17,216 +17,253 @@ locals {
       name        = "atlas-docker"
       description = "Atlas network visualization tool"
       clone       = true
+      archived    = false
     },
     {
       name        = "beszel-agent"
       description = "Beszel agent with Nvidia support"
       clone       = false
+      archived    = false
     },
     {
       name        = "beszel-agent-intel"
       description = "Beszel agent with Intel support"
       clone       = false
+      archived    = false
     },
     {
       name        = "beszel-docker"
       description = "Beszel system and docker monitoring"
       clone       = true
+      archived    = false
     },
     {
       name        = "croc-docker"
       description = "Croc relay server"
       clone       = true
+      archived    = false
     },
     {
       name        = "Crossfire"
       description = "Crypto.com crossire project"
       clone       = false
+      archived    = true
     },
     {
       name        = "cyber-chef-docker"
       description = "CyperChef"
       clone       = true
+      archived    = false
     },
     {
       name        = "dhjensen"
       description = "My GitHub profile README.md"
       clone       = false
+      archived    = false
     },
     {
       name        = "dhjensen-tf"
       description = "Terraform for my private infrastructure"
       clone       = false
+      archived    = false
     },
     {
       name        = "dotfiles"
       description = "My home directory dotfiles"
       clone       = false
+      archived    = false
     },
     {
       name        = "dozzle-docker"
       description = "Dozzle docker container log output viewer"
       clone       = true
+      archived    = false
     },
     {
       name        = "duplicati-docker"
       description = "Duplicati backup client"
       clone       = true
+      archived    = false
     },
     {
       name        = "GerlingCourse"
       description = "Jeff Gerlling course stuff"
       clone       = false
+      archived    = true
     },
     {
       name        = "gitea-docker"
       description = "Gitea GitHub mirror"
       clone       = true
+      archived    = false
     },
     {
       name        = "homarr-docker"
       description = "Homarr dashboard"
       clone       = true
+      archived    = false
     },
     {
       name        = "it-tools-docker"
       description = "IT tools static site"
       clone       = true
+      archived    = false
     },
     {
       name        = "jackett-docker"
       description = "Jackett"
       clone       = true
+      archived    = false
     },
     {
       name        = "jellyfin-docker"
       description = "Jellyfin media server"
       clone       = false
+      archived    = false
     },
     {
       name        = "matomo-docker"
       description = "Matomo(Piwik) analytics"
       clone       = true
+      archived    = false
     },
     {
       name        = "maubot-docker"
       description = "Maubot with ntfy integration"
       clone       = true
+      archived    = false
     },
     {
       name        = "miscscripts"
       description = "Various scripts"
       clone       = false
+      archived    = false
     },
     {
       name        = "netbox-compose"
       description = "Netbox"
       clone       = true
+      archived    = false
     },
     {
       name        = "nginx-proxy-manager"
       description = "Nginx proxy manager"
       clone       = true
+      archived    = true
     },
     {
       name        = "ntfy-docker"
       description = "Ntfy notification"
       clone       = true
+      archived    = false
     },
     {
       name        = "ombi-docker"
       description = "Ombi media request handling"
       clone       = true
+      archived    = false
     },
     {
       name        = "onedrive-compose"
-      description = "OneDrive linux client"
+      description = "OneDrive linux client (Archived)"
       clone       = false
+      archived    = true
     },
     {
       name        = "openspeedtest-docker"
       description = "OpenSpeedTest"
       clone       = true
+      archived    = false
     },
     {
       name        = "pi-hole-docker"
       description = "Pi-hole blocking them ads"
       clone       = true
+      archived    = false
     },
     {
       name        = "pythontest"
       description = "Python course source"
       clone       = false
+      archived    = true
     },
     {
       name        = "qbittorrent-docker"
       description = "qbittorrent client"
       clone       = false
+      archived    = false
     },
     {
       name        = "radarr-docker"
       description = "Radarr"
       clone       = false
+      archived    = false
     },
     {
       name        = "raspberry"
-      description = "Configuring raspberry pi OS as a docker host"
+      description = "Configure docker host etc."
       clone       = false
+      archived    = false
     },
     {
       name        = "rustdesk-docker"
       description = "RustDesk"
       clone       = true
+      archived    = false
     },
     {
       name        = "sonarr-docker"
       description = "Sonarr"
       clone       = false
+      archived    = false
     },
     {
       name        = "vagrant"
       description = "Vagrant"
       clone       = false
+      archived    = true
     },
     {
       name        = "vault-docker"
-      description = "HashiCorp Vault"
+      description = "HashiCorp Vault (Archived)"
       clone       = true
+      archived    = true
     },
     {
       name        = "wg-portal-docker"
       description = "WireGuard portal"
       clone       = true
+      archived    = false
     },
     {
       name        = "whats-up-docker"
       description = "What's up Docker with ntfy inegration"
       clone       = true
+      archived    = false
     },
     {
       name        = "traefik-docker"
       description = "Traefik reverse proxy"
       clone       = true
+      archived    = false
     },
     {
       name        = "crowdsec-docker"
       description = "Crowdsec dynamic IP banlist"
       clone       = true
+      archived    = false
     },
     {
       name        = "beszel-agent-normal"
       description = "Beszel agent"
       clone       = true
+      archived    = false
     },
     {
       name        = "infisical-docker"
       description = "Infisical is the open-source platform for secrets management, PKI, and SSH access."
       clone       = true
-    },
-    {
-      name        = "workstation-ansible"
-      description = "Configure Arch Linux workstation with Ansible"
-      clone       = false
+      archived    = false
     }
   ]
 }
@@ -257,6 +294,7 @@ resource "github_repository" "repository" {
   allow_merge_commit      = true
   allow_squash_merge      = true
   allow_rebase_merge      = false
+  archived                = each.value.archived
   delete_branch_on_merge  = true
   has_downloads           = false
   auto_init               = true
