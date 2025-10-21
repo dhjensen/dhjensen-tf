@@ -264,6 +264,12 @@ locals {
       description = "Infisical is the open-source platform for secrets management, PKI, and SSH access."
       clone       = true
       archived    = false
+    },
+    {
+      name        = "arch"
+      description = "My personal arch linux setup written in ansible"
+      clone       = false
+      archived    = false
     }
   ]
 }
