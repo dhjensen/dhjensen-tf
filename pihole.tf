@@ -166,6 +166,10 @@ locals {
     {
       name = "infisical.dhjensen.tech"
       cname = "pi2.dhjensen.tech"
+    },
+    {
+      name = "ha.dhjensen.tech"
+      cname = "pi2.dhjensen.tech"
     }
   ]
 }
