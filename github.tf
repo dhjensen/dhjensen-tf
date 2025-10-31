@@ -276,6 +276,12 @@ locals {
       description = "Home Assistant"
       clone       = true
       archived    = false
+    },
+    {
+      name        = "winapps"
+      description = "Run Windows apps such as Microsoft Office/Adobe in Linux (Ubuntu/Fedora) and GNOME/KDE as if they were a part of the native OS, including Nautilus integration. Hard fork of https://github.com/Fmstrat/winapps/"
+      clone       = false
+      archived    = false
     }
   ]
 }
