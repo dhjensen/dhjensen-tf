@@ -208,13 +208,6 @@ locals {
     {
       zone    = "dhjensen.tech"
       type    = "CNAME"
-      name    = "dozzle-oci"
-      value   = "instance001.dhjensen.tech"
-      proxied = "false"
-    },
-    {
-      zone    = "dhjensen.tech"
-      type    = "CNAME"
       name    = "ntfy"
       value   = "instance001.dhjensen.tech"
       proxied = "false"
