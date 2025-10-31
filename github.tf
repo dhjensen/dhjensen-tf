@@ -270,6 +270,12 @@ locals {
       description = "My personal arch linux setup written in ansible"
       clone       = false
       archived    = false
+    },
+    {
+      name        = "ha-docker"
+      description = "Home Assistant"
+      clone       = true
+      archived    = false
     }
   ]
 }
