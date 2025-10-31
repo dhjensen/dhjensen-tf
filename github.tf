@@ -75,9 +75,9 @@ locals {
     },
     {
       name        = "dozzle-docker"
-      description = "Dozzle docker container log output viewer"
+      description = "Dozzle docker container log output viewer (Archived)"
       clone       = true
-      archived    = false
+      archived    = true
     },
     {
       name        = "duplicati-docker"

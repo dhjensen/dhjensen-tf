@@ -52,14 +52,6 @@ locals {
       cname = "pi2.dhjensen.tech"
     },
     {
-      name = "dozzle.dhjensen.tech"
-      cname = "pi2.dhjensen.tech"
-    },
-    {
-      name = "dozzle-pc.dhjensen.tech"
-      cname = "daniel-pc.dhjensen.tech"
-    },
-    {
       name = "homarr.dhjensen.tech"
       cname = "pi2.dhjensen.tech"
     },
