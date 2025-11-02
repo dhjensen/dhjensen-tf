@@ -88,52 +88,45 @@ locals {
     },
     {
       zone    = "daniboy.dk"
-      type    = "CNAME"
-      name    = "sites"
-      value   = "ghs.google.com"
-      proxied = "false"
-    },
-    {
-      zone    = "daniboy.dk"
-      type    = "CNAME"
-      name    = "calendar"
-      value   = "ghs.google.com"
-      proxied = "false"
-    },
-    {
-      zone    = "daniboy.dk"
-      type    = "CNAME"
-      name    = "skole"
-      value   = "ghs.google.com"
-      proxied = "false"
-    },
-    {
-      zone    = "daniboy.dk"
-      type    = "CNAME"
-      name    = "docs"
-      value   = "ghs.google.com"
-      proxied = "false"
-    },
-    {
-      zone    = "daniboy.dk"
-      type    = "CNAME"
-      name    = "mail"
-      value   = "ghs.google.com"
-      proxied = "false"
-    },
-    {
-      zone    = "daniboy.dk"
-      type    = "A"
+      type    = "TXT"
       name    = "@"
-      value   = "192.0.2.1"
-      proxied = "true"
+      value   = "protonmail-verification=7438ebe130a6ecf3b042584a5b86fc2e4faecc6e"
+      proxied = "false"
     },
     {
       zone    = "daniboy.dk"
-      type    = "A"
-      name    = "www"
-      value   = "192.0.2.1"
-      proxied = "true"
+      type    = "TXT"
+      name    = "@"
+      value   = "v=spf1 include:_spf.protonmail.ch ~all"
+      proxied = "false"
+    },
+    {
+      zone    = "daniboy.dk"
+      type    = "TXT"
+      name    = "_dmarc"
+      value   = "v=DMARC1; p=quarantine"
+      proxied = "false"
+    },
+    {
+      zone    = "daniboy.dk"
+      type    = "CNAME"
+      name    = "protonmail._domainkey"
+      value   = "protonmail.domainkey.djs3rjuutdsrmmleotmsq4tcxov6tynxnrqp55kg5gs6ga7la3yzq.domains.proton.ch"
+      proxied = "false"
+    },
+    {
+      zone    = "daniboy.dk"
+      type    = "CNAME"
+      name    = "protonmail2._domainkey"
+      value   = "protonmail2.domainkey.djs3rjuutdsrmmleotmsq4tcxov6tynxnrqp55kg5gs6ga7la3yzq.domains.proton.ch"
+      proxied = "false"
+    },
+    {
+      zone    = "daniboy.dk"
+      type    = "CNAME"
+      name    = "protonmail3._domainkey"
+      value   = "protonmail3.domainkey.djs3rjuutdsrmmleotmsq4tcxov6tynxnrqp55kg5gs6ga7la3yzq.domains.proton.ch"
+      proxied = "false"
     },
     {
       zone    = "dhjensen.tech"
@@ -298,6 +291,16 @@ locals {
       zone      = "dhjensen.tech"
       value     = "mailsec.protonmail.ch"
       priority  = 20
+    },
+    {
+      zone      = "daniboy.dk"
+      value     = "mail.protonmail.ch"
+      priority  = 10
+    },
+    {
+      zone      = "daniboy.dk"
+      value     = "mailsec.protonmail.ch"
+      priority  = 20
     }
   ]
 }
@@ -337,17 +340,4 @@ resource "cloudflare_dns_record" "mx_records" {
   priority  = each.value.priority
   proxied   = false
   ttl       = 1
-}
-
-resource "cloudflare_page_rule" "daniboy_redirect" {
-  zone_id = cloudflare_zone.zones["daniboy.dk"].id
-  target = "*.daniboy.dk/*"
-  status = "active"
-
-  actions = {
-    forwarding_url = {
-      status_code = 301
-      url = "https://dhjensen.dk"
-    }
-  }
 }
