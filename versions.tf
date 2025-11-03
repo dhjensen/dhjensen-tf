@@ -11,11 +11,11 @@ terraform {
   required_providers {
     cloudflare = {
       source  = "cloudflare/cloudflare"
-      version = "5.10.1"
+      version = "5.12.0"
     }
     github = {
       source  = "integrations/github"
-      version = "6.6.0"
+      version = "6.7.5"
     }
     gitea = {
       source  = "go-gitea/gitea"
@@ -31,7 +31,7 @@ terraform {
     }
     oci = {
       source  = "oracle/oci"
-      version = "7.21.0"
+      version = "7.24.0"
     }
     infisical = {
       source = "Infisical/infisical"
