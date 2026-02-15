@@ -314,7 +314,6 @@ resource "github_repository" "repository" {
   allow_rebase_merge      = false
   archived                = each.value.archived
   delete_branch_on_merge  = true
-  has_downloads           = false
   auto_init               = true
   license_template        = "gpl-3.0"
 }
