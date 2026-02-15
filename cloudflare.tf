@@ -69,7 +69,7 @@ locals {
       zone    = "dhjensen.dk"
       type    = "A"
       name    = "matomo"
-      value   = "87.61.92.76"
+      value   = "90.184.12.17"
       proxied = "false"
     },
     {
@@ -153,7 +153,7 @@ locals {
       zone    = "dhjensen.tech"
       type    = "A"
       name    = "r01"
-      value   = "87.61.92.76"
+      value   = "90.184.12.17"
       proxied = "false"
     },
     {
@@ -217,13 +217,6 @@ locals {
       type    = "CNAME"
       name    = "duplicati-oci"
       value   = "instance001.dhjensen.tech"
-      proxied = "false"
-    },
-    {
-      zone    = "dhjensen.tech"
-      type    = "A"
-      name    = "infisical"
-      value   = "87.61.92.76"
       proxied = "false"
     },
     {

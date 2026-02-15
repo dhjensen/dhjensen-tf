@@ -35,10 +35,10 @@ resource "oci_core_network_security_group_security_rule" "dhjensen-network-secur
 }
 resource "oci_core_network_security_group_security_rule" "dhjensen-network-security-group-rule-ingress" {
   network_security_group_id = oci_core_network_security_group.dhjensen-network-security-group-001.id
-  description       = "Only allow SSH from 87.61.92.76"
+  description       = "Only allow SSH from home IP"
   direction         = "INGRESS"
   protocol          = 6
-  source            = "87.61.92.76/32"
+  source            = "90.184.12.17/32"
   source_type       = "CIDR_BLOCK"
   tcp_options {
     destination_port_range {
