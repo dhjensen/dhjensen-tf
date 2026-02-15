@@ -11,6 +11,10 @@ locals {
     {
       name = "dhj-laptop.dhjensen.tech"
       value = "192.168.86.35"
+    },
+    {
+      name = "proxmox.dhjensen.tech"
+      value = "192.168.86.120"
     }
   ]
 
