@@ -189,10 +189,3 @@ resource "oci_core_volume" "dhjensen-volume-001" {
   size_in_gbs         = 50
   vpus_per_gb         = 0
 }
-resource "oci_core_volume_attachment" "dhjensen-volume-attachment-001" {
-  attachment_type                     = "paravirtualized"
-  display_name                        = "dhjensen-volume-attachment-001"
-  instance_id                         = oci_core_instance.dhjensen-instance-001.id
-  is_pv_encryption_in_transit_enabled = true
-  volume_id                           = oci_core_volume.dhjensen-volume-001.id
-}
