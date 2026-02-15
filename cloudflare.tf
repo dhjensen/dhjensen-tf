@@ -260,8 +260,28 @@ locals {
       name    = "protonmail3._domainkey"
       value   = "protonmail3.domainkey.dq4hqk5z5keqv2ovgcyoxjehwq2hlhitsu6u2446qo75fteyunrpa.domains.proton.ch"
       proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "jellyfin"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "ombi"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
+    },
+    {
+      zone    = "dhjensen.tech"
+      type    = "CNAME"
+      name    = "radarr"
+      value   = "r01.dhjensen.tech"
+      proxied = "false"
     }
-    
   ]
 
   mx_records = [
