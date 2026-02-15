@@ -35,10 +35,10 @@ resource "oci_core_network_security_group_security_rule" "dhjensen-network-secur
 }
 resource "oci_core_network_security_group_security_rule" "dhjensen-network-security-group-rule-ingress" {
   network_security_group_id = oci_core_network_security_group.dhjensen-network-security-group-001.id
-  description       = "Only allow SSH from 87.61.92.76"
+  description       = "Only allow SSH from home IP"
   direction         = "INGRESS"
   protocol          = 6
-  source            = "87.61.92.76/32"
+  source            = "90.184.12.17/32"
   source_type       = "CIDR_BLOCK"
   tcp_options {
     destination_port_range {
@@ -188,11 +188,4 @@ resource "oci_core_volume" "dhjensen-volume-001" {
   display_name        = "dhjensen-volume-001"
   size_in_gbs         = 50
   vpus_per_gb         = 0
-}
-resource "oci_core_volume_attachment" "dhjensen-volume-attachment-001" {
-  attachment_type                     = "paravirtualized"
-  display_name                        = "dhjensen-volume-attachment-001"
-  instance_id                         = oci_core_instance.dhjensen-instance-001.id
-  is_pv_encryption_in_transit_enabled = true
-  volume_id                           = oci_core_volume.dhjensen-volume-001.id
 }

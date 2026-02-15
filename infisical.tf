@@ -47,8 +47,7 @@ resource "infisical_secret_folder" "folders-prod" {
   folder_path       = "/"
   name              = each.value.name
   project_id        = infisical_project.dhjensen.id
-  # 0.15.43 fails to configure this with 502 error
-  # force_delete      = false
+  force_delete      = false
 }
 resource "infisical_secret_folder" "folders-daniel-pc" {
   for_each = {
@@ -58,8 +57,7 @@ resource "infisical_secret_folder" "folders-daniel-pc" {
   folder_path       = "/"
   name              = each.value.name
   project_id        = infisical_project.dhjensen.id
-  # 0.15.43 fails to configure this with 502 error
-  # force_delete      = false
+  force_delete      = false
 }
 resource "infisical_secret_folder" "folders-pi2" {
   for_each = {
@@ -69,8 +67,7 @@ resource "infisical_secret_folder" "folders-pi2" {
   folder_path       = "/"
   name              = each.value.name
   project_id        = infisical_project.dhjensen.id
-  # 0.15.43 fails to configure this with 502 error
-  # force_delete      = false
+  force_delete      = false
 }
 resource "infisical_secret_folder" "folders-instance-001" {
   for_each = {
@@ -80,6 +77,5 @@ resource "infisical_secret_folder" "folders-instance-001" {
   folder_path       = "/"
   name              = each.value.name
   project_id        = infisical_project.dhjensen.id
-  # 0.15.43 fails to configure this with 502 error
-  # force_delete      = false
+  force_delete      = false
 }
