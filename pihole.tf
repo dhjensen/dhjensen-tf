@@ -15,6 +15,10 @@ locals {
     {
       name = "proxmox.dhjensen.tech"
       value = "192.168.86.120"
+    },
+    {
+      name = "proxy.dhjensen.lan"
+      value = "192.168.86.126"
     }
   ]
 
