@@ -17,7 +17,7 @@ locals {
       value = "192.168.86.120"
     },
     {
-      name = "proxy.dhjensen.lan"
+      name = "proxy.lan.dhjensen.tech"
       value = "192.168.86.126"
     }
   ]
@@ -170,6 +170,10 @@ locals {
     {
       name = "ha.dhjensen.tech"
       cname = "pi2.dhjensen.tech"
+    },
+    {
+      name = "seerr.dhjensen.tech"
+      cname = "daniel-pc.dhjensen.tech"
     }
   ]
 }
