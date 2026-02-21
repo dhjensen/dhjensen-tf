@@ -271,7 +271,7 @@ locals {
     {
       zone    = "dhjensen.tech"
       type    = "CNAME"
-      name    = "ombi"
+      name    = "seerr"
       value   = "r01.dhjensen.tech"
       proxied = "false"
     },
