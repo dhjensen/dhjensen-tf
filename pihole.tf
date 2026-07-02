@@ -13,12 +13,8 @@ locals {
       value = "192.168.86.35"
     },
     {
-      name = "proxmox.dhjensen.tech"
+      name = "mini.dhjensen.tech"
       value = "192.168.86.120"
-    },
-    {
-      name = "proxy.lan.dhjensen.tech"
-      value = "192.168.86.126"
     }
   ]
 
@@ -125,30 +121,6 @@ locals {
     },
     {
       name = "duplicati-pc.dhjensen.tech"
-      cname = "daniel-pc.dhjensen.tech"
-    },
-    {
-      name = "node1-pi2.vault.dhjensen.tech"
-      cname = "pi2.dhjensen.tech"
-    },
-    {
-      name = "node2-pi2.vault.dhjensen.tech"
-      cname = "pi2.dhjensen.tech"
-    },
-    {
-      name = "node3-pi2.vault.dhjensen.tech"
-      cname = "pi2.dhjensen.tech"
-    },
-    {
-      name = "node1-daniel-pc.vault.dhjensen.tech"
-      cname = "daniel-pc.dhjensen.tech"
-    },
-    {
-      name = "node2-daniel-pc.vault.dhjensen.tech"
-      cname = "daniel-pc.dhjensen.tech"
-    },
-    {
-      name = "node3-daniel-pc.vault.dhjensen.tech"
       cname = "daniel-pc.dhjensen.tech"
     },
     {
