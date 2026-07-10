@@ -9,10 +9,6 @@ locals {
       value = "192.168.86.21"
     },
     {
-      name = "dhj-laptop.dhjensen.tech"
-      value = "192.168.86.35"
-    },
-    {
       name = "mini.dhjensen.tech"
       value = "192.168.86.120"
     }
@@ -24,18 +20,6 @@ locals {
       cname = "pi2.dhjensen.tech"
     },
     {
-      name = "npm.dhjensen.tech"
-      cname = "pi2.dhjensen.tech"
-    },
-    {
-      name = "npm-pc.dhjensen.tech"
-      cname = "daniel-pc.dhjensen.tech"
-    },
-    {
-      name = "wg.dhjensen.tech"
-      cname = "pi2.dhjensen.tech"
-    },
-    {
       name = "wud.dhjensen.tech"
       cname = "pi2.dhjensen.tech"
     },
@@ -44,23 +28,7 @@ locals {
       cname = "daniel-pc.dhjensen.tech"
     },
     {
-      name = "maubot.dhjensen.tech"
-      cname = "pi2.dhjensen.tech"
-    },
-    {
-      name = "cyberchef.dhjensen.tech"
-      cname = "pi2.dhjensen.tech"
-    },
-    {
-      name = "ittools.dhjensen.tech"
-      cname = "pi2.dhjensen.tech"
-    },
-    {
       name = "homarr.dhjensen.tech"
-      cname = "pi2.dhjensen.tech"
-    },
-    {
-      name = "speedtest.dhjensen.tech"
       cname = "pi2.dhjensen.tech"
     },
     {
@@ -77,10 +45,6 @@ locals {
     },
     {
       name = "netbox.dhjensen.tech"
-      cname = "pi2.dhjensen.tech"
-    },
-    {
-      name = "ombi.dhjensen.tech"
       cname = "pi2.dhjensen.tech"
     },
     {
@@ -112,14 +76,6 @@ locals {
       cname = "pi2.dhjensen.tech"
     },
     {
-      name = "atlas-pc.dhjensen.tech"
-      cname = "daniel-pc.dhjensen.tech"
-    },
-    {
-      name = "atlas.dhjensen.tech"
-      cname = "pi2.dhjensen.tech"
-    },
-    {
       name = "duplicati-pc.dhjensen.tech"
       cname = "daniel-pc.dhjensen.tech"
     },
@@ -132,15 +88,7 @@ locals {
       cname = "pi2.dhjensen.tech"
     },
     {
-      name = "crowdsec.dhjensen.tech"
-      cname = "pi2.dhjensen.tech"
-    },
-    {
       name = "infisical.dhjensen.tech"
-      cname = "pi2.dhjensen.tech"
-    },
-    {
-      name = "ha.dhjensen.tech"
       cname = "pi2.dhjensen.tech"
     },
     {
