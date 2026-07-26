@@ -94,6 +94,18 @@ locals {
     {
       name = "seerr.dhjensen.tech"
       cname = "daniel-pc.dhjensen.tech"
+    },
+    {
+      name = "traefik-mini.dhjensen.tech"
+      cname = "mini.dhjensen.tech"
+    },
+    {
+      name = "wud-mini.dhjensen.tech"
+      cname = "mini.dhjensen.tech"
+    },
+    {
+      name = "duplicati-mini.dhjensen.tech"
+      cname = "mini.dhjensen.tech"
     }
   ]
 }
