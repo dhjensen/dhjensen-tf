@@ -6,9 +6,26 @@ resource "infisical_project" "dhjensen" {
   should_create_default_envs  = true
   type                        = "secret-manager"
 }
+resource "infisical_project" "mini" {
+  name                        = "mini"
+  slug                        = "minime"
+  description                 = "All items for mini.dhjensen.tech server"
+  has_delete_protection       = false
+  should_create_default_envs  = true
+  type                        = "secret-manager"
+}
 resource "infisical_project_user" "dhjensen" {
   project_id = infisical_project.dhjensen.id
   username   = "dhjen@outlook.com"
+  roles = [
+    {
+      role_slug = "admin"
+    }
+  ]
+}
+resource "infisical_project_user" "dhjensen-dk" {
+  project_id = infisical_project.mini.id
+  username   = "dhjensen@dhjensen.dk"
   roles = [
     {
       role_slug = "admin"
@@ -77,5 +94,15 @@ resource "infisical_secret_folder" "folders-instance-001" {
   folder_path       = "/"
   name              = each.value.name
   project_id        = infisical_project.dhjensen.id
+  force_delete      = false
+}
+resource "infisical_secret_folder" "folders-mini-prod" {
+  for_each = {
+    for repo in local.repositories : repo.name => repo
+  }
+  environment_slug  = "prod"
+  folder_path       = "/"
+  name              = each.value.name
+  project_id        = infisical_project.mini.id
   force_delete      = false
 }
