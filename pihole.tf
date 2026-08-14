@@ -106,6 +106,10 @@ locals {
     {
       name = "duplicati-mini.dhjensen.tech"
       cname = "mini.dhjensen.tech"
+    },
+    {
+      name = "uk.dhjensen.tech"
+      cname = "mini.dhjensen.tech"
     }
   ]
 }
