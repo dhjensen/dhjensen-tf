@@ -288,6 +288,12 @@ locals {
       description = "Seerr"
       clone       = true
       archived    = false
+    },
+    {
+      name        = "uptime-kuma-docker"
+      description = "Uptime Kuma – A Fancy Self-Hosted Monitoring Tool"
+      clone       = false
+      archived    = false
     }
   ]
 }
