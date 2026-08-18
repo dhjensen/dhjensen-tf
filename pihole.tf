@@ -41,7 +41,7 @@ locals {
     },
     {
       name = "jellyfin.dhjensen.tech"
-      cname = "daniel-pc.dhjensen.tech"
+      cname = "mini.dhjensen.tech"
     },
     {
       name = "netbox.dhjensen.tech"
@@ -49,7 +49,7 @@ locals {
     },
     {
       name = "qb.dhjensen.tech"
-      cname = "daniel-pc.dhjensen.tech"
+      cname = "mini.dhjensen.tech"
     },
     {
       name = "jackett.dhjensen.tech"
@@ -57,11 +57,11 @@ locals {
     },
     {
       name = "radarr.dhjensen.tech"
-      cname = "daniel-pc.dhjensen.tech"
+      cname = "mini.dhjensen.tech"
     },
     {
       name = "sonarr.dhjensen.tech"
-      cname = "daniel-pc.dhjensen.tech"
+      cname = "mini.dhjensen.tech"
     },
     {
       name = "gitea.dhjensen.tech"
@@ -93,7 +93,7 @@ locals {
     },
     {
       name = "seerr.dhjensen.tech"
-      cname = "daniel-pc.dhjensen.tech"
+      cname = "mini.dhjensen.tech"
     },
     {
       name = "traefik-mini.dhjensen.tech"
